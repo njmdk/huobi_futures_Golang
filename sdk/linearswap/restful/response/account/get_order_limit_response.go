@@ -1,4 +1,4 @@
-﻿package account
+package account
 
 type GetOrderLimitResponse struct {
 	Status string `json:"status"`
@@ -18,6 +18,12 @@ type GetOrderLimitResponse struct {
 			OpenLimit float32 `json:"open_limit"`
 
 			CloseLimit float32 `json:"close_limit"`
+
+			ContractType string `json:"contract_type"`
+
+			Pair string `json:"pair"`
+
+			BusinessType string `json:"business_type"`
 		} `json:"list"`
 	} `json:"data,omitempty"`
 

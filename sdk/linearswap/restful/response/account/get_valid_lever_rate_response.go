@@ -1,4 +1,4 @@
-﻿package account
+package account
 
 type GetValidLeverRateResponse struct {
 	Status string `json:"status"`
@@ -13,6 +13,10 @@ type GetValidLeverRateResponse struct {
 		MarginMode string `json:"margin_mode"`
 
 		AvailableLeverRate string `json:"available_level_rate"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
 	} `json:"data,omitempty"`
 
 	Ts int64 `json:"ts"`

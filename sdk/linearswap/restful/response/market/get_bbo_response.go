@@ -1,4 +1,4 @@
-﻿package market
+package market
 
 type GetBboResponse struct {
 	Status string `json:"status"`
@@ -15,6 +15,8 @@ type GetBboResponse struct {
 		Ask []float32 `json:"ask"`
 
 		Bid []float32 `json:"bid"`
+
+		BusinessType string `json:"business_type"`
 
 		Ts int64 `json:"ts"`
 	} `json:"ticks,omitempty"`

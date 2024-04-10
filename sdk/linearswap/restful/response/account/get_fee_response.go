@@ -1,4 +1,4 @@
-﻿package account
+package account
 
 type GetFeeResponse struct {
 	Status string `json:"status"`
@@ -21,6 +21,14 @@ type GetFeeResponse struct {
 		CloseTakerFee string `json:"close_taker_fee"`
 
 		FeeAsset string `json:"fee_asset"`
+
+		ContractType string `json:"contract_type"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
+
+		DeliveryFee string `json:"delivery_fee"`
 	} `json:"data,omitempty"`
 
 	Ts int64 `json:"ts"`

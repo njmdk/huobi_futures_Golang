@@ -1,4 +1,4 @@
-﻿package account
+package account
 
 type GetAccountInfoResponse struct {
 	Status string `json:"status"`
@@ -32,6 +32,14 @@ type GetAccountInfoResponse struct {
 
 		RiskRate float32 `json:"risk_rate,omitempty"`
 
+		NewRiskRate string `json:"new_risk_rate,omitempty"`
+
+		MoneyIn float32 `json:"money_in,omitempty"`
+
+		MoneyOut float32 `json:"money_out,omitempty"`
+
+		TradePartition string `json:"trade_partition,omitempty"`
+
 		LiquidationPrice float32 `json:"liquidation_price,omitempty"`
 
 		LeverRate float32 `json:"lever_rate"`
@@ -41,6 +49,8 @@ type GetAccountInfoResponse struct {
 		MarginMode string `json:"margin_mode"`
 
 		MarginAccount string `json:"margin_account"`
+
+		PositionMode string `json:"position_mode"`
 
 		ContractDetail []struct {
 			Symbol string `json:"symbol"`
@@ -60,6 +70,16 @@ type GetAccountInfoResponse struct {
 			LeverRate float32 `json:"lever_rate"`
 
 			AdjustFactor float32 `json:"adjust_factor"`
+
+			Pair string `json:"pair"`
+
+			BusinessType string `json:"business_type"`
+
+			CrossMaxAvailable string `json:"cross_max_available"`
+
+			ContractType string `json:"contract_type"`
+
+			TradePartition float32 `json:"trade_partition,omitempty"`
 		} `json:"contract_detail,omitempty"`
 	} `json:"data,omitempty"`
 

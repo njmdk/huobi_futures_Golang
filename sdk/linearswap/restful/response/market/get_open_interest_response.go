@@ -1,4 +1,4 @@
-﻿package market
+package market
 
 type GetOpenInterestResponse struct {
 	Status string `json:"status"`
@@ -23,6 +23,12 @@ type GetOpenInterestResponse struct {
 		TradeVolume float32 `json:"trade_volume"`
 
 		TradeTurnover float32 `json:"trade_turnover"`
+
+		ContractType string `json:"contract_type"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
 	} `json:"data,omitempty"`
 
 	Ts int64 `json:"ts"`

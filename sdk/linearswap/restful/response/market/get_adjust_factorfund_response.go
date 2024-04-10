@@ -1,4 +1,4 @@
-﻿package market
+package market
 
 type GetAdjustFactorFundResponse struct {
 	Status string `json:"status"`
@@ -13,6 +13,12 @@ type GetAdjustFactorFundResponse struct {
 		ContractCode string `json:"contract_code"`
 
 		MarginMode string `json:"margin_mode"`
+
+		ContractType string `json:"contract_type"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
 
 		List []struct {
 			LeverRate float32 `json:"lever_rate"`

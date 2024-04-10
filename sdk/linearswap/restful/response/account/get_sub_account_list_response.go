@@ -1,4 +1,4 @@
-﻿package account
+package account
 
 type GetSubAccountListResponse struct {
 	Status string `json:"status"`
@@ -26,6 +26,8 @@ type GetSubAccountListResponse struct {
 			MarginMode string `json:"margin_mode"`
 
 			MarginAccount string `json:"margin_account"`
+
+			QueryId int64 `json:"query_id"`
 		}
 	} `json:"data,omitempty"`
 

@@ -1,4 +1,4 @@
-﻿package market
+package market
 
 type GetEstimatedSettlementPriceResponse struct {
 	Status string `json:"status"`
@@ -13,6 +13,12 @@ type GetEstimatedSettlementPriceResponse struct {
 		EstimatedSettlementPrice string `json:"estimated_settlement_price"`
 
 		SettlementType string `json:"settlement_type"`
+
+		ContractType string `json:"contract_type"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
 	} `json:"data,omitempty"`
 
 	Ts int64 `json:"ts"`

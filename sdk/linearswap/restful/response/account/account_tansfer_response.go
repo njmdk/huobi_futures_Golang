@@ -1,4 +1,4 @@
-﻿package account
+package account
 
 type AccountTransferResponse struct {
 	Status string `json:"status"`
@@ -9,6 +9,8 @@ type AccountTransferResponse struct {
 
 	Data struct {
 		OrderId string `json:"order_id"`
+
+		ClientOrderId string `json:"client_order_id,omitempty"`
 	} `json:"data,omitempty"`
 
 	Ts int64 `json:"ts"`

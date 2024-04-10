@@ -1,4 +1,4 @@
-﻿package market
+package market
 
 type GetTradeResponse struct {
 	Ch string `json:"ch,omitempty"`
@@ -23,11 +23,13 @@ type GetTradeResponse struct {
 
 			Ts int64 `json:"ts"`
 
-			Quantity string `json:"quantity"`
+			Quantity float64 `json:"quantity"`
 
-			TradeTurnover string `json:"trade_turnover"`
+			TradeTurnover float64 `json:"trade_turnover"`
 
 			ContractCode string `json:"contract_code"`
+
+			BusinessType string `json:"business_type"`
 		} `json:"data"`
 
 		Ts int64 `json:"ts"`

@@ -1,4 +1,4 @@
-﻿package market
+package market
 
 type GetLadderMarginResponse struct {
 	Status string `json:"status"`
@@ -15,6 +15,12 @@ type GetLadderMarginResponse struct {
 		MarginMode string `json:"margin_mode"`
 
 		MarginAccount string `json:"margin_account"`
+
+		ContractType string `json:"contract_type"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
 
 		List []struct {
 			LeverRate int `json:"lever_rate"`

@@ -1,4 +1,4 @@
-﻿package triggerorder
+package triggerorder
 
 type GetRelationTpslOrderResponse struct {
 	Status string `json:"status"`
@@ -61,6 +61,12 @@ type GetRelationTpslOrderResponse struct {
 		MarginMode string `json:"margin_mode"`
 
 		MarginAccount string `json:"margin_account"`
+
+		ContractType string `json:"contract_type"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
 
 		TpslOrderInfo []struct {
 			Volume float32 `json:"volume"`

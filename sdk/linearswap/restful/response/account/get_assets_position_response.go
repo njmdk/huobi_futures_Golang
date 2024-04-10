@@ -1,4 +1,4 @@
-﻿package account
+package account
 
 type GetAssetsPositionResponse struct {
 	Status string `json:"status"`
@@ -41,6 +41,14 @@ type GetAssetsPositionResponse struct {
 		MarginMode string `json:"margin_mode"`
 
 		MarginAccount string `json:"margin_account"`
+
+		NewRiskRate string `json:"new_risk_rate"`
+
+		PositionMode string `json:"position_mode"`
+
+		TradePartition string `json:"trade_partition"`
+
+		AdlRiskPercent string `json:"adl_risk_percent"`
 
 		ContractDetail []struct {
 			Symbol string `json:"symbol"`
@@ -96,6 +104,14 @@ type GetAssetsPositionResponse struct {
 			MarginMode string `json:"margin_mode"`
 
 			MarginAccount string `json:"margin_account"`
+
+			NewRiskRate string `json:"new_risk_rate"`
+
+			TradePartition string `json:"trade_partition"`
+
+			PositionMode string `json:"position_mode"`
+
+			AdlRiskPercent string `json:"adl_risk_percent"`
 		} `json:"positions,omitempty"`
 	} `json:"data,omitempty"`
 

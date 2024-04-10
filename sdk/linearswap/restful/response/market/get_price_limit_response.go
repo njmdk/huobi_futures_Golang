@@ -1,4 +1,4 @@
-﻿package market
+package market
 
 type GetPriceLimitResponse struct {
 	Status string `json:"status"`
@@ -15,6 +15,12 @@ type GetPriceLimitResponse struct {
 		HighLimit float32 `json:"high_limit"`
 
 		LowLimit float32 `json:"low_limit"`
+
+		ContractType string `json:"contract_type"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
 	} `json:"data,omitempty"`
 
 	Ts int64 `json:"ts"`

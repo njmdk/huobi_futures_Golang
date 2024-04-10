@@ -1,4 +1,4 @@
-﻿package order
+package order
 
 type SwitchLeverRateResponse struct {
 	Status string `json:"status"`
@@ -13,6 +13,12 @@ type SwitchLeverRateResponse struct {
 		MarginMode string `json:"margin_mode"`
 
 		LeverRate int `json:"lever_rate"`
+
+		ContractType string `json:"contract_type"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
 	} `json:"data,omitempty"`
 
 	Ts int64 `json:"ts"`

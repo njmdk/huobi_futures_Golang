@@ -1,4 +1,4 @@
-﻿package restful
+package restful
 
 import (
 	"encoding/json"
@@ -21,6 +21,7 @@ func (tc *TransferClient) Init(accessKey string, secretKey string, host string) 
 	return tc
 }
 
+// TransferAsync ([General] Transfer margin between Spot account and USDT Margined Contracts account)
 func (tc *TransferClient) TransferAsync(data chan transfer.TransferResponse, from string, to string, amount float32, marginAccount string, currency string) {
 	if currency == "" {
 		currency = "USDT"

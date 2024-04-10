@@ -1,4 +1,4 @@
-﻿package triggerorder
+package triggerorder
 
 type TpslOrderRequest struct {
 	ContractCode string `json:"contract_code"`
@@ -18,6 +18,10 @@ type TpslOrderRequest struct {
 	SlOrderPrice float32 `json:"sl_order_price,omitempty"`
 
 	SlOrderPriceType string `json:"sl_order_price_type,omitempty"`
+
+	ContractType string `json:"contract_type"`
+
+	Pair string `json:"pair"`
 }
 
 type BatchTpslOrderRequest []TpslOrderRequest

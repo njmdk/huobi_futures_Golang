@@ -1,4 +1,4 @@
-﻿package order
+package order
 
 type GetOpenOrderResponse struct {
 	Status string `json:"status"`
@@ -68,6 +68,8 @@ type GetOpenOrderResponse struct {
 			UpdateTime int64 `json:"update_time"`
 
 			RealProfit float32 `json:"real_profit"`
+
+			ReduceOnly int `json:"reduce_only"`
 		} `json:"orders"`
 
 		TotalPage int `json:"total_page"`

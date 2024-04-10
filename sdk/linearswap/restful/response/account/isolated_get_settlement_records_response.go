@@ -1,4 +1,4 @@
-﻿package account
+package account
 
 type IsolatedGetSettlementRecordsResponse struct {
 	Status string `json:"status"`
@@ -8,6 +8,9 @@ type IsolatedGetSettlementRecordsResponse struct {
 	ErrorMessage string `json:"err_msg,omitempty"`
 
 	Data struct {
+		TotalPage         string `json:"total_page"`
+		CurrentPage       string `json:"current_page"`
+		TotalSize         string `json:"total_size"`
 		SettlementRecords []struct {
 			Symbol string `json:"symbol"`
 

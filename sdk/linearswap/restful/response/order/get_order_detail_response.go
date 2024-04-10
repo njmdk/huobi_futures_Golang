@@ -1,4 +1,4 @@
-﻿package order
+package order
 
 type GetOrderDetailResponse struct {
 	Status string `json:"status"`
@@ -77,6 +77,16 @@ type GetOrderDetailResponse struct {
 		IsTpsl int `json:"is_tpsl"`
 
 		RealProfit float32 `json:"real_profit"`
+
+		ContractType string `json:"contract_type"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
+
+		ReduceOnly int `json:"reduce_only"`
+
+		CanceledSource string `json:"canceled_source"`
 
 		Trades []struct {
 			Id string `json:"id"`

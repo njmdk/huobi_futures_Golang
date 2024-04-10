@@ -1,4 +1,4 @@
-﻿package market
+package market
 
 type GetEliteRatioResponse struct {
 	Status string `json:"status"`
@@ -11,6 +11,10 @@ type GetEliteRatioResponse struct {
 		Symbol string `json:"symbol"`
 
 		ContractCode string `json:"contract_code"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
 
 		ShortLongRatio []struct {
 			BuyRatio float32 `json:"buy_ratio"`

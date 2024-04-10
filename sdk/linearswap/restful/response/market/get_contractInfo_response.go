@@ -1,4 +1,4 @@
-﻿package market
+package market
 
 type GetContractInfoResponse struct {
 	Status string `json:"status"`
@@ -25,6 +25,14 @@ type GetContractInfoResponse struct {
 		ContractStatus int `json:"contract_status"`
 
 		SupportMarginMode string `json:"support_margin_mode"`
+
+		ContractType string `json:"contract_type"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
+
+		DeliveryDate string `json:"delivery_date"`
 	} `json:"data,omitempty"`
 
 	Ts int64 `json:"ts"`

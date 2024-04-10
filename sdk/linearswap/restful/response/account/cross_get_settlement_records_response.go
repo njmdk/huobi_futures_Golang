@@ -1,4 +1,4 @@
-﻿package account
+package account
 
 type CrossGetSettlementRecordsResponse struct {
 	Status string `json:"status"`
@@ -8,6 +8,9 @@ type CrossGetSettlementRecordsResponse struct {
 	ErrorMessage string `json:"err_msg,omitempty"`
 
 	Data struct {
+		TotalPage         int `json:"total_page"`
+		CurrentPage       int `json:"current_page"`
+		TotalSize         int `json:"total_size"`
 		SettlementRecords []struct {
 			MarginMode string `json:"margin_mode"`
 
@@ -42,6 +45,8 @@ type CrossGetSettlementRecordsResponse struct {
 
 				FeeAsset string `json:"fee_asset"`
 
+				Pair string `json:"pair"`
+
 				Positions []struct {
 					Symbol string `json:"symbol"`
 
@@ -62,6 +67,8 @@ type CrossGetSettlementRecordsResponse struct {
 					SettlementPrice float32 `json:"settlement_price"`
 
 					SettlementType string `json:"settlement_type"`
+
+					Pair string `json:"pair"`
 				} `json:"positions"`
 			} `json:"contract_detail"`
 		} `json:"settlement_records"`

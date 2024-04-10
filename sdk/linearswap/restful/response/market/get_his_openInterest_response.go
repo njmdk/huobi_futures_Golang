@@ -1,4 +1,4 @@
-﻿package market
+package market
 
 type GetHisOpenInterestResponse struct {
 	Status string `json:"status"`
@@ -11,6 +11,12 @@ type GetHisOpenInterestResponse struct {
 		Symbol string `json:"symbol"`
 
 		ContractCode string `json:"contract_code"`
+
+		ContractType string `json:"contract_type"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
 
 		Tick []struct {
 			Volume float32 `json:"volume"`

@@ -1,4 +1,4 @@
-﻿package market
+package market
 
 type GetTradeStateResponse struct {
 	Status string `json:"status"`
@@ -21,6 +21,12 @@ type GetTradeStateResponse struct {
 		Close int `json:"close"`
 
 		Cancel int `json:"cancel"`
+
+		ContractType string `json:"contract_type"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
 	} `json:"data,omitempty"`
 
 	Ts int64 `json:"ts"`

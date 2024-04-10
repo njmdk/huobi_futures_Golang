@@ -1,7 +1,13 @@
-﻿package order
+package order
 
 type PlaceOrderRequest struct {
 	ContractCode string `json:"contract_code"`
+
+	ReduceOnly string `json:"reduce_only"`
+
+	Pair string `json:"pair"`
+
+	ContractType string `json:"contract_type"`
 
 	ClientOrderId int64 `json:"client_order_id,omitempty"`
 

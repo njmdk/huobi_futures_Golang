@@ -1,4 +1,4 @@
-﻿package triggerorder
+package triggerorder
 
 type GetHisOrderResponse struct {
 	Status string `json:"status"`
@@ -60,6 +60,14 @@ type GetHisOrderResponse struct {
 			MarginMode string `json:"margin_mode"`
 
 			MarginAccount string `json:"margin_account"`
+
+			ReduceOnly int `json:"reduce_only"`
+
+			ContractType string `json:"contract_type"`
+
+			Pair string `json:"pair"`
+
+			BusinessType string `json:"business_type"`
 
 			TpslOrderType string `json:"tpsl_order_type,omitempty"`
 

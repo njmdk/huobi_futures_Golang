@@ -1,4 +1,4 @@
-﻿package restful
+package restful
 
 import (
 	"encoding/json"
@@ -22,6 +22,7 @@ func (toc *TriggerOrderClient) Init(accessKey string, secretKey string, host str
 	return toc
 }
 
+// IsolatedPlaceOrderAsync ([Isolated] Place Trigger Order)
 func (toc *TriggerOrderClient) IsolatedPlaceOrderAsync(data chan responsetriggerorder.PlaceOrderResponse, request requesttiggerorder.PlaceOrderRequest) {
 	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_trigger_order", nil)
 
@@ -42,6 +43,7 @@ func (toc *TriggerOrderClient) IsolatedPlaceOrderAsync(data chan responsetrigger
 	data <- result
 }
 
+// CrossPlaceOrderAsync ([Cross] Place Trigger Order)
 func (toc *TriggerOrderClient) CrossPlaceOrderAsync(data chan responsetriggerorder.PlaceOrderResponse, request requesttiggerorder.PlaceOrderRequest) {
 	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_order", nil)
 
@@ -62,6 +64,7 @@ func (toc *TriggerOrderClient) CrossPlaceOrderAsync(data chan responsetriggerord
 	data <- result
 }
 
+// IsolatedCancelOrderAsync ([Isolated] Cancel Trigger Order) and ([Isolated] Cancel All Trigger Orders)
 func (toc *TriggerOrderClient) IsolatedCancelOrderAsync(data chan responsetriggerorder.CancelOrderResponse,
 	contractCode string, orderId string, offset string, direction string) {
 	// url
@@ -85,7 +88,7 @@ func (toc *TriggerOrderClient) IsolatedCancelOrderAsync(data chan responsetrigge
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}
@@ -97,8 +100,9 @@ func (toc *TriggerOrderClient) IsolatedCancelOrderAsync(data chan responsetrigge
 	data <- result
 }
 
+// CrossCancelOrderAsync ([Cross] Cancel Trigger Order) and  ([Cross] Cancel All Trigger Orders)
 func (toc *TriggerOrderClient) CrossCancelOrderAsync(data chan responsetriggerorder.CancelOrderResponse,
-	contractCode string, orderId string, offset string, direction string) {
+	contractCode string, orderId string, offset string, direction string, pair string, contractType string) {
 	// url
 	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_cancel", nil)
 	if orderId == "" {
@@ -116,11 +120,17 @@ func (toc *TriggerOrderClient) CrossCancelOrderAsync(data chan responsetriggeror
 	if direction != "" {
 		content += fmt.Sprintf(",\"direction\": \"%s\"", direction)
 	}
+	if pair != "" {
+		content += fmt.Sprintf(",\"pair\": \"%s\"", pair)
+	}
+	if contractType != "" {
+		content += fmt.Sprintf(",\"contract_type\": \"%s\"", contractType)
+	}
 	if content != "" {
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}
@@ -132,6 +142,7 @@ func (toc *TriggerOrderClient) CrossCancelOrderAsync(data chan responsetriggeror
 	data <- result
 }
 
+// IsolatedGetOpenOrderAsync ([Isolated] Query Trigger Order Open Orders)
 func (toc *TriggerOrderClient) IsolatedGetOpenOrderAsync(data chan responsetriggerorder.GetOpenOrderResponse,
 	contractCode string, pageIndex int, pageSize int, tradeType int) {
 	// url
@@ -152,7 +163,7 @@ func (toc *TriggerOrderClient) IsolatedGetOpenOrderAsync(data chan responsetrigg
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}
@@ -164,8 +175,9 @@ func (toc *TriggerOrderClient) IsolatedGetOpenOrderAsync(data chan responsetrigg
 	data <- result
 }
 
+// CrossGetOpenOrderAsync ([Cross] Query Trigger Order Open Orders)
 func (toc *TriggerOrderClient) CrossGetOpenOrderAsync(data chan responsetriggerorder.GetOpenOrderResponse,
-	contractCode string, pageIndex int, pageSize int, tradeType int) {
+	contractCode string, pageIndex int, pageSize int, tradeType int, pair string) {
 	// url
 	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_openorders", nil)
 
@@ -180,11 +192,14 @@ func (toc *TriggerOrderClient) CrossGetOpenOrderAsync(data chan responsetriggero
 	if tradeType != 0 {
 		content += fmt.Sprintf(",\"trade_type\": %d", tradeType)
 	}
+	if pair != "" {
+		content += fmt.Sprintf(",\"pair\": \"%s\"", pair)
+	}
 	if content != "" {
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}
@@ -196,6 +211,7 @@ func (toc *TriggerOrderClient) CrossGetOpenOrderAsync(data chan responsetriggero
 	data <- result
 }
 
+// IsolatedGetHisOrderAsync ([Isolated] Query Trigger Order History)
 func (toc *TriggerOrderClient) IsolatedGetHisOrderAsync(data chan responsetriggerorder.GetHisOrderResponse, contractCode string, tradeType int, status string, createDate int,
 	pageIndex int, pageSize int, sortBy string) {
 	// url
@@ -216,7 +232,7 @@ func (toc *TriggerOrderClient) IsolatedGetHisOrderAsync(data chan responsetrigge
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}
@@ -228,8 +244,9 @@ func (toc *TriggerOrderClient) IsolatedGetHisOrderAsync(data chan responsetrigge
 	data <- result
 }
 
+// CrossGetHisOrderAsync ([Cross] Query Trigger Order History)
 func (toc *TriggerOrderClient) CrossGetHisOrderAsync(data chan responsetriggerorder.GetHisOrderResponse, contractCode string, tradeType int, status string, createDate int,
-	pageIndex int, pageSize int, sortBy string) {
+	pageIndex int, pageSize int, sortBy string, pair string) {
 	// url
 	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_trigger_hisorders", nil)
 
@@ -244,11 +261,14 @@ func (toc *TriggerOrderClient) CrossGetHisOrderAsync(data chan responsetriggeror
 	if sortBy != "" {
 		content += fmt.Sprintf(",\"sort_by\": \"%s\"", sortBy)
 	}
+	if pair != "" {
+		content += fmt.Sprintf(",\"pair\": \"%s\"", pair)
+	}
 	if content != "" {
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}
@@ -260,8 +280,9 @@ func (toc *TriggerOrderClient) CrossGetHisOrderAsync(data chan responsetriggeror
 	data <- result
 }
 
-func (oc *OrderClient) IsolatedTpslOrderAsync(data chan responsetriggerorder.TpslOrderResponse, request requesttiggerorder.TpslOrderRequest) {
-	url := oc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_tpsl_order", nil)
+// IsolatedTpslOrderAsync ([Isolated]Set a Take-profit and Stop-loss Order for an Existing Position)
+func (toc *TriggerOrderClient) IsolatedTpslOrderAsync(data chan responsetriggerorder.TpslOrderResponse, request requesttiggerorder.TpslOrderRequest) {
+	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_tpsl_order", nil)
 
 	content, err := json.Marshal(request)
 	if err != nil {
@@ -279,8 +300,9 @@ func (oc *OrderClient) IsolatedTpslOrderAsync(data chan responsetriggerorder.Tps
 	data <- result
 }
 
-func (oc *OrderClient) CrossTpslOrderAsync(data chan responsetriggerorder.TpslOrderResponse, request requesttiggerorder.TpslOrderRequest) {
-	url := oc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_order", nil)
+// CrossTpslOrderAsync ([Cross]Set a Take-profit and Stop-loss Order for an Existing Position)
+func (toc *TriggerOrderClient) CrossTpslOrderAsync(data chan responsetriggerorder.TpslOrderResponse, request requesttiggerorder.TpslOrderRequest) {
+	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_order", nil)
 
 	content, err := json.Marshal(request)
 	if err != nil {
@@ -298,6 +320,7 @@ func (oc *OrderClient) CrossTpslOrderAsync(data chan responsetriggerorder.TpslOr
 	data <- result
 }
 
+// IsolatedTpslCancelAsync ([Isolated]Cancel a Take-profit and Stop-loss Order) and ([Isolated]Cancel all Take-profit and Stop-loss Orders)
 func (toc *TriggerOrderClient) IsolatedTpslCancelAsync(data chan responsetriggerorder.CancelOrderResponse,
 	contractCode string, orderId string, direction string) {
 	// url
@@ -318,7 +341,7 @@ func (toc *TriggerOrderClient) IsolatedTpslCancelAsync(data chan responsetrigger
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}
@@ -330,8 +353,9 @@ func (toc *TriggerOrderClient) IsolatedTpslCancelAsync(data chan responsetrigger
 	data <- result
 }
 
+// CrossTpslCancelAsync ([Cross]Cancel a Take-profit and Stop-loss Order) and  ([Cross]Cancel all Take-profit and Stop-loss Orders)
 func (toc *TriggerOrderClient) CrossTpslCancelAsync(data chan responsetriggerorder.CancelOrderResponse,
-	contractCode string, orderId string, direction string) {
+	contractCode string, orderId string, direction string, pair string, contractType string) {
 	// url
 	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_cancel", nil)
 	if orderId == "" {
@@ -346,11 +370,17 @@ func (toc *TriggerOrderClient) CrossTpslCancelAsync(data chan responsetriggerord
 	if direction != "" {
 		content += fmt.Sprintf(",\"direction\": \"%s\"", direction)
 	}
+	if pair != "" {
+		content += fmt.Sprintf(",\"pair\": \"%s\"", pair)
+	}
+	if contractType != "" {
+		content += fmt.Sprintf(",\"contract_type\": \"%s\"", contractType)
+	}
 	if content != "" {
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}
@@ -362,6 +392,7 @@ func (toc *TriggerOrderClient) CrossTpslCancelAsync(data chan responsetriggerord
 	data <- result
 }
 
+// IsolatedGetTpslOpenOrderAsync ([Isolated]Query Open Take-profit and Stop-loss Orders)
 func (toc *TriggerOrderClient) IsolatedGetTpslOpenOrderAsync(data chan responsetriggerorder.GetOpenOrderResponse,
 	contractCode string, pageIndex int, pageSize int, tradeType int) {
 	// url
@@ -382,7 +413,7 @@ func (toc *TriggerOrderClient) IsolatedGetTpslOpenOrderAsync(data chan responset
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}
@@ -394,8 +425,9 @@ func (toc *TriggerOrderClient) IsolatedGetTpslOpenOrderAsync(data chan responset
 	data <- result
 }
 
+// CrossGetTpslOpenOrderAsync ([Cross]Query Open Take-profit and Stop-loss Orders)
 func (toc *TriggerOrderClient) CrossGetTpslOpenOrderAsync(data chan responsetriggerorder.GetOpenOrderResponse,
-	contractCode string, pageIndex int, pageSize int, tradeType int) {
+	contractCode string, pageIndex int, pageSize int, tradeType int, pair string) {
 	// url
 	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_openorders", nil)
 
@@ -410,11 +442,14 @@ func (toc *TriggerOrderClient) CrossGetTpslOpenOrderAsync(data chan responsetrig
 	if tradeType != 0 {
 		content += fmt.Sprintf(",\"trade_type\": %d", tradeType)
 	}
+	if pair != "" {
+		content += fmt.Sprintf(",\"pair\": \"%s\"", pair)
+	}
 	if content != "" {
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}
@@ -426,6 +461,7 @@ func (toc *TriggerOrderClient) CrossGetTpslOpenOrderAsync(data chan responsetrig
 	data <- result
 }
 
+// IsolatedGetTpslHisOrderAsync ([Isolated]Query Take-profit and Stop-loss History Orders)
 func (toc *TriggerOrderClient) IsolatedGetTpslHisOrderAsync(data chan responsetriggerorder.GetHisOrderResponse,
 	contractCode string, status string, createDate int, pageIndex int, pageSize int, sortBy string) {
 	// url
@@ -446,7 +482,7 @@ func (toc *TriggerOrderClient) IsolatedGetTpslHisOrderAsync(data chan responsetr
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}
@@ -458,8 +494,9 @@ func (toc *TriggerOrderClient) IsolatedGetTpslHisOrderAsync(data chan responsetr
 	data <- result
 }
 
+// CrossGetTpslHisOrderAsync ([Cross]Query Take-profit and Stop-loss History Orders)
 func (toc *TriggerOrderClient) CrossGetTpslHisOrderAsync(data chan responsetriggerorder.GetHisOrderResponse,
-	contractCode string, status string, createDate int, pageIndex int, pageSize int, sortBy string) {
+	contractCode string, status string, createDate int, pageIndex int, pageSize int, sortBy string, pair string) {
 	// url
 	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_tpsl_hisorders", nil)
 
@@ -474,11 +511,14 @@ func (toc *TriggerOrderClient) CrossGetTpslHisOrderAsync(data chan responsetrigg
 	if sortBy != "" {
 		content += fmt.Sprintf(",\"sort_by\":\"%s\"", sortBy)
 	}
+	if pair != "" {
+		content += fmt.Sprintf(",\"pair\": \"%s\"", pair)
+	}
 	if content != "" {
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}
@@ -490,6 +530,7 @@ func (toc *TriggerOrderClient) CrossGetTpslHisOrderAsync(data chan responsetrigg
 	data <- result
 }
 
+// IsolatedGetRelationTpslOrderAsync ([Isolated]Query Info Of Take-profit and Stop-loss Order That Related To Position Opening Order)
 func (toc *TriggerOrderClient) IsolatedGetRelationTpslOrderAsync(data chan responsetriggerorder.GetRelationTpslOrderResponse,
 	contractCode string, orderId int) {
 	// url
@@ -501,7 +542,7 @@ func (toc *TriggerOrderClient) IsolatedGetRelationTpslOrderAsync(data chan respo
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}
@@ -513,18 +554,22 @@ func (toc *TriggerOrderClient) IsolatedGetRelationTpslOrderAsync(data chan respo
 	data <- result
 }
 
+// CrossGetRelationTpslOrderAsync ([Cross]Query Info Of Take-profit and Stop-loss Order That Related To Position Opening Order)
 func (toc *TriggerOrderClient) CrossGetRelationTpslOrderAsync(data chan responsetriggerorder.GetRelationTpslOrderResponse,
-	contractCode string, orderId int) {
+	contractCode string, orderId int, pair string) {
 	// url
 	url := toc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_relation_tpsl_order", nil)
 
 	// content
 	content := fmt.Sprintf(",\"contract_code\":\"%s\", \"order_id\":%d", contractCode, orderId)
+	if pair != "" {
+		content += fmt.Sprintf(",\"pair\": \"%s\"", pair)
+	}
 	if content != "" {
 		content = fmt.Sprintf("{ %s }", content[1:])
 	}
 
-	getResp, getErr := reqbuilder.HttpPost(url, string(content))
+	getResp, getErr := reqbuilder.HttpPost(url, content)
 	if getErr != nil {
 		log.Error("http get error: %s", getErr)
 	}

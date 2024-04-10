@@ -1,4 +1,4 @@
-﻿package account
+package account
 
 type GetAccountPositionResponse struct {
 	Status string `json:"status"`
@@ -41,6 +41,20 @@ type GetAccountPositionResponse struct {
 		MarginMode string `json:"margin_mode"`
 
 		MarginAccount string `json:"margin_account"`
+
+		AdlRiskPercent string `json:"adl_risk_percent"`
+
+		WithdrawAvailable string `json:"withdraw_available"`
+
+		ContractType string `json:"contract_type"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
+
+		PositionMode string `json:"position_mode"`
+
+		LiquidationPrice string `json:"liquidation_price"`
 	} `json:"data,omitempty"`
 
 	Ts int64 `json:"ts"`

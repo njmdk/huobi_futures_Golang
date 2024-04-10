@@ -1,4 +1,4 @@
-﻿package market
+package market
 
 type GetRiskInfoResponse struct {
 	Status string `json:"status"`
@@ -13,6 +13,10 @@ type GetRiskInfoResponse struct {
 		InsuranceFund float32 `json:"insurance_fund"`
 
 		ContractCode string `json:"contract_code"`
+
+		Pair string `json:"pair"`
+
+		BusinessType string `json:"business_type"`
 	} `json:"data,omitempty"`
 
 	Ts int64 `json:"ts"`

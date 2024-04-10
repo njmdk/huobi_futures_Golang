@@ -1,4 +1,4 @@
-﻿package account
+package account
 
 type GetAssetsPositionResponseSingle struct {
 	Status string `json:"status"`
@@ -40,7 +40,17 @@ type GetAssetsPositionResponseSingle struct {
 
 		MarginMode string `json:"margin_mode"`
 
+		MoneyIn string `json:"money_in"`
+
+		MoneyOut string `json:"money_out"`
+
+		NewRiskRate string `json:"new_risk_rate"`
+
+		PositionMode string `json:"position_mode"`
+
 		MarginAccount string `json:"margin_account"`
+
+		AdlRiskPercent string `json:"adl_risk_percent"`
 
 		ContractDetail []struct {
 			Symbol string `json:"symbol"`
@@ -60,6 +70,14 @@ type GetAssetsPositionResponseSingle struct {
 			LeverRate float32 `json:"lever_rate"`
 
 			AdjustFactor float32 `json:"adjust_factor"`
+
+			CrossMaxAvailable string `json:"cross_max_available"`
+
+			TradePartition string `json:"trade_partition"`
+
+			Pair string `json:"pair"`
+
+			BusinessType string `json:"business_type"`
 		} `json:"contract_detail,omitempty"`
 
 		Positions []struct {
@@ -96,6 +114,16 @@ type GetAssetsPositionResponseSingle struct {
 			MarginMode string `json:"margin_mode"`
 
 			MarginAccount string `json:"margin_account"`
+
+			CrossMaxAvailable float32 `json:"cross_max_available"`
+
+			TradePartition string `json:"trade_partition"`
+
+			Pair string `json:"pair"`
+
+			BusinessType string `json:"business_type"`
+
+			PositionMode string `json:"position_mode"`
 		} `json:"positions,omitempty"`
 	} `json:"data,omitempty"`
 

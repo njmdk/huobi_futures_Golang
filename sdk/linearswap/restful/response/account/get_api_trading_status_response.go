@@ -1,4 +1,4 @@
-﻿package account
+package account
 
 type GetApiTradingStatusResponse struct {
 	Status string `json:"status"`
@@ -9,7 +9,7 @@ type GetApiTradingStatusResponse struct {
 
 	Ts int64 `json:"ts"`
 
-	Data struct {
+	Data []struct {
 		IsDisable int `json:"is_disable"`
 
 		OrderPriceTypes string `json:"order_price_types"`

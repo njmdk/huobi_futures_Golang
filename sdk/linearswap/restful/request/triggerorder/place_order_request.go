@@ -1,7 +1,9 @@
-﻿package triggerorder
+package triggerorder
 
 type PlaceOrderRequest struct {
 	ContractCode string `json:"contract_code"`
+
+	ReduceOnly int `json:"reduce_only"`
 
 	TriggerType string `json:"trigger_type"`
 

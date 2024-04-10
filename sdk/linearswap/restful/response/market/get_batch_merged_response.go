@@ -1,4 +1,4 @@
-﻿package market
+package market
 
 type GetBatchMergedResponse struct {
 	Ch string `json:"ch,omitempty"`
@@ -31,6 +31,8 @@ type GetBatchMergedResponse struct {
 		Vol string `json:"vol"`
 
 		TradeTurnover string `json:"trade_turnover"`
+
+		NumberOf string `json:"number_of"`
 
 		Ts int64 `json:"ts"`
 	} `json:"ticks,omitempty"`
