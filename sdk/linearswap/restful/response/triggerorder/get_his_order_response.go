@@ -71,7 +71,7 @@ type GetHisOrderResponse struct {
 
 			TpslOrderType string `json:"tpsl_order_type,omitempty"`
 
-			SourceOrderIßd string `json:"source_order_id,omitempty"`
+			SourceOrderId string `json:"source_order_id,omitempty"`
 
 			RelationTpslOrderId string `json:"relation_tpsl_order_id,omitempty"`
 		} `json:"orders"`
