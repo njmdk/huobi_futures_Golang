@@ -221,12 +221,15 @@ func (oc *OrderClient) CrossSwitchLeverRateAsync(data chan responseorder.SwitchL
 	url := oc.PUrlBuilder.Build(linearswap.POST_METHOD, "/linear-swap-api/v1/swap_cross_switch_lever_rate", nil)
 
 	// content
-	content := fmt.Sprintf("{\"contract_code\": \"%s\", \"lever_rate\": %d}", contractCode, leverRate)
+	content := fmt.Sprintf("\"contract_code\": \"%s\", \"lever_rate\": %d", contractCode, leverRate)
 	if pair != "" {
 		content += fmt.Sprintf(",\"pair\": %s", pair)
 	}
 	if contractType != "" {
 		content += fmt.Sprintf(",\"contract_type\": %s", contractType)
+	}
+	if content != "" {
+		content = fmt.Sprintf("{%s}", content)
 	}
 
 	getResp, getErr := reqbuilder.HttpPost(url, content)
@@ -526,7 +529,7 @@ func (oc *OrderClient) IsolatedGetHisOrderExactAsync(data chan responseorder.Get
 	// content
 	content := fmt.Sprintf(",\"contract_code\": \"%s\",\"trade_type\": \"%d\",\"type\": \"%d\",\"status\": \"%s\"", contractCode, tradeType, fcType, status)
 	if orderPriceType != "" {
-		content += fmt.Sprintf(",\"page_index\": \"%s\"", orderPriceType)
+		content += fmt.Sprintf(",\"order_price_type\": \"%s\"", orderPriceType)
 	}
 	if startTime != 0 {
 		content += fmt.Sprintf(",\"start_time\": %d", startTime)
@@ -570,7 +573,7 @@ func (oc *OrderClient) CrossGetHisOrderExactAsync(data chan responseorder.GetHis
 	// content
 	content := fmt.Sprintf(",\"contract_code\": \"%s\",\"trade_type\": \"%d\",\"type\": \"%d\",\"status\": \"%s\"", contractCode, tradeType, fcType, status)
 	if orderPriceType != "" {
-		content += fmt.Sprintf(",\"page_index\": \"%s\"", orderPriceType)
+		content += fmt.Sprintf(",\"order_price_type\": \"%s\"", orderPriceType)
 	}
 	if startTime != 0 {
 		content += fmt.Sprintf(",\"start_time\": %d", startTime)
