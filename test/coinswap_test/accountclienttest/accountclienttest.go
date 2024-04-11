@@ -1,10 +1,10 @@
 package accountclienttest
 
 import (
+	"huobi_futures_Golang/config"
 	"huobi_futures_Golang/sdk/coinswap/restful"
 	"huobi_futures_Golang/sdk/coinswap/restful/response/account"
 	"huobi_futures_Golang/sdk/log"
-	"huobi_futures_Golang/test/config"
 )
 
 func RunAllExamples() {

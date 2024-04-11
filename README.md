@@ -1,8 +1,8 @@
-# Huobi Futures Golang SDK (but only supports linearswap now)
+# Huobi Golang SDK For Contracts v3
 
-This is Huobi Golang SDK, you can import it to your package.
+This is Huobi Golang SDK v3, you can import to your project and use this SDK to query all market data, trading and manage your account. The SDK supports RESTful API invoking, and subscribing the market, account and order update from the WebSocket connection.
 
-The SDK API supports both RESTful and websocket to get/sub the market, account and order infomation.
+If you already use SDK v1 or v2, it is strongly suggested migrate to v3 as we refactor the implementation to make it simpler and easy to maintain. The SDK v3 is completely consistent with the API documentation of the new HTX open platform. Compared to SDK versions v1 and v2, due to changes in parameters of many interfaces, in order to match the latest interface parameter situation, v3 version has made adjustments to parameters of more than 80 interfaces to ensure that requests can be correctly initiated and accurate response data can be obtained. Meanwhile, the v3 version has added over 130 new interfaces available for use, greatly expanding the number of available interfaces.  We will stop the maintenance of v2 in the near future.
 
 ## Table of Contents
 
@@ -14,21 +14,21 @@ The SDK API supports both RESTful and websocket to get/sub the market, account a
   - [Folder structure](#Folder-Structure)
   - [Client](#Client)
   - [Response](#Response)
-  
+
 - [Request examples](#Request-examples)
   - [Market data](#Market-data)
 
 - [Subscription examples](#Subscription-examples)
   - [Subscribe trade update](#Subscribe-trade-update)
 
-  
+
 
 ## Quick Start
 
-The SDK is run and test in go1.15.4, you can import the source code from remote or local what shuold be dowload first.
+You can import the source code from remote or local what shuold be dowload first.
 
 The package **sdk** is core code source as SDK API.
-The package **test** is a unit test what you can find usage of each API interface in.
+The package **test** is a test example what you can find usage of each API interface in.
 
 If you want to create your own application, you can follow below steps:
 
@@ -65,54 +65,25 @@ time.Sleep(time.Duration(10) * time.Second)
 
 The client Init function must set AccessKey/SecretKey two value when you access private data. And it not need to set AccessKey/SecretKey value when you access public data such as market data.
 
-You can create config.json in your package for config AccessKey/SecretKey and other input data.
+if you want to access private data, you need below additional steps:
 
-```json
-{
-  "Host": "api.hbdm.com",
-  "AccessKey": "x-x-x-x",
-  "SecretKey": "x-x-x-x",
-  "AccountId": 10000000,
-  "SubUid": 10000000
-}
-```
-Then create config.go file to read the config.json file
+1. Create an **API Key** first from Huobi official website
+2. Create **key.go** into your **config** folder (package). The purpose of this file is to prevent submitting SecretKey into repository by accident, so this file is already added in the *.gitignore* file.
+
+3. Assign your secret key to string *SecretKey* and Assign your access key to string *AccessKey*
 
 ```go
-import (
-	"encoding/json"
-	"os"
-)
+// key.go file
+package config
 
-type Config struct {
-	Host      string
-	AccessKey string
-	SecretKey string
-	AccountId int64
-	SubUid    int64
-}
+// replace with your API SecretKey
+var SecretKey = "xxxx-xxxx-xxxx-xxxx"
 
-var config *Config
-
-func init() {
-
-	filePtr, err := os.Open("config.json")
-	if err != nil {
-		return
-	}
-	defer filePtr.Close()
-
-	config = new(Config)
-	decoder := json.NewDecoder(filePtr)
-	err = decoder.Decode(config)
-}
- ```
-
-And use it as follow:
-```go
-accessKey := config.AccessKey
-secretKey := config.SecretKey
+// replace with your API AccessKey
+var AccessKey = "xxxx-xxxx-xxxx-xxxx"
 ```
+
+If you don't need to access private data, you can ignore the secret key.
 
 ### Folder Structure
 
@@ -120,29 +91,53 @@ This is the folder and namespace structure of SDK source code and the descriptio
 
 - **sdk**: The SDK API package
   - **linearswap**: the linear swap api src inclue RESTful and websocket
+  - **coinfutures**: the coin futures api src inclue RESTful and websocket
+  - **coinswap**: the coin swap api src inclue RESTful and websocket
   - **requestbuilder**: Responsible to build the request with the signature
   - **log**: The internal logger interface and implementations
   - **wsbase**: The websocket data model
-- **test**: The unit test package
-  - **xxx_test.go**: The golang unit test file
+- **test**: The test example package
+  - **xxx_test**: The golang test example
 
-You can find all demo in xxx_test.go to get/sub linear swap private/public data
+You can find all demo example in xxx_test to get/sub contract private/public data, the request data of the example should be filled in according to your actual situation.
 
 ### Client
 
 In this SDK, the client is the object to access the Huobi API. All the client are listed in below table. Each client is very small and simple.
 
-| Access Type | Client | Privacy | Data Category  |
-| ----------- | -------| ------- | ------------ |
-| RESTful     | AccountClient | Private | account info |
-|             | MarketClient | Public | market info |
-|             | OrderClient | Private | about order |
-|             | TransferClient | Private | transfer assets |
-|             | TriggerOrderClient | Private | about trigger order |
-| Websocket   | WSIndexClinet | Public | index info |
-|             | WSMarketClinet | Public | market info |
-|             | WSNotifyClinet | Public/Private | market info/ account info |
-|             |                |         |              |
+| Module      | Access Type | Client               | Privacy        | Data Category             |
+| ----------- | ----------- | -------------------- | -------------- | ------------------------- |
+| LinearSwap  | RESTful     | AccountClient        | Private        | account info              |
+|             |             | CommonClient         | Private        | common info               |
+|             |             | MarketClient         | Public         | market info               |
+|             |             | OrderClient          | Private        | about order               |
+|             |             | TransferClient       | Private        | transfer assets           |
+|             |             | TriggerOrderClient   | Private        | about trigger order       |
+|             |             | UnifiedAccountClient | Private        | unified account info      |
+|             | Websocket   | WSIndexClinet        | Public         | index info                |
+|             |             | WSMarketClinet       | Public         | market info               |
+|             |             | WSNotifyClinet       | Public/Private | market info/ account info |
+|             |             | WSCenterNotifyClient | Public         | heartbeat info            |
+| CoinFutures | RestFul     | AccountClient        | Private        | account info              |
+|             |             | CommonClient         | Private        | common info               |
+|             |             | MarketClient         | Public         | market info               |
+|             |             | OrderClient          | Private        | about order               |
+|             |             | TransferClient       | Private        | transfer assets           |
+|             |             | TriggerOrderClient   | Private        | about trigger order       |
+|             | Websocket   | WSIndexClinet        | Public         | index info                |
+|             |             | WSMarketClinet       | Public         | market info               |
+|             |             | WSNotifyClinet       | Public/Private | market info/ account info |
+|             |             | WSCenterNotifyClient | Public         | heartbeat info            |
+| CoinSwap    | RestFul     | AccountClient        | Private        | account info              |
+|             |             | CommonClient         | Private        | common info               |
+|             |             | MarketClient         | Public         | market info               |
+|             |             | OrderClient          | Private        | about order               |
+|             |             | TransferClient       | Private        | transfer assets           |
+|             |             | TriggerOrderClient   | Private        | about trigger order       |
+|             | Websocket   | WSIndexClinet        | Public         | index info                |
+|             |             | WSMarketClinet       | Public         | market info               |
+|             |             | WSNotifyClinet       | Public/Private | market info/ account info |
+|             |             | WSCenterNotifyClient | Public         | heartbeat info            |
 
 #### Public vs. Private
 
@@ -206,7 +201,7 @@ time.Sleep(time.Duration(10) * time.Second)
 
 #### Custom host
 
-Each client Init support an optional host parameter, by default it is "api.btcgateway.pro". If you need to use different host, you can specify the custom host. 
+Each client Init support an optional host parameter, by default it is "api.hbdm.com". If you need to use different host, you can specify the custom host.
 
 ```go
 acClient := restful.AccountClient{}
@@ -218,8 +213,12 @@ wsmkClient := new(ws.WSMarketClient).Init("Host")
 ### Response
 
 All response data are defined as follow:
-- **huobi_futures_Golang.sdk.linearswap.restful.response**: all RESTful response data
-- **huobi_futures_Golang.sdk.linearswap.ws.response**: all websockt response data
+- **huobi_futures_Golang.sdk.linearswap.restful.response**: all linearswap RESTful response data
+- **huobi_futures_Golang.sdk.linearswap.ws.response**: all linearswap websockt response data
+- **huobi_futures_Golang.sdk.coinfutures.restful.response**: all coinfutures RESTful response data
+- **huobi_futures_Golang.sdk.linearswap.ws.response**: all coinfutures websockt response data
+- **huobi_futures_Golang.sdk.coinswap.restful.response**: all coinswap RESTful response data
+- **huobi_futures_Golang.sdk.coinswap.ws.response**: all coinswap websockt response data
 
 ## Request Examples
 ### Market data

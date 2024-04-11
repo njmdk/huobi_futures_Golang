@@ -1,11 +1,11 @@
 package orderclienttest
 
 import (
+	"huobi_futures_Golang/config"
 	"huobi_futures_Golang/sdk/linearswap/restful"
 	requestorder "huobi_futures_Golang/sdk/linearswap/restful/request/order"
 	"huobi_futures_Golang/sdk/linearswap/restful/response/order"
 	"huobi_futures_Golang/sdk/log"
-	"huobi_futures_Golang/test/config"
 )
 
 func RunAllExamples() {

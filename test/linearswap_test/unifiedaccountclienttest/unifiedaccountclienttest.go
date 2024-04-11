@@ -1,10 +1,10 @@
 package unifiedaccountclienttest
 
 import (
+	"huobi_futures_Golang/config"
 	"huobi_futures_Golang/sdk/linearswap/restful"
 	"huobi_futures_Golang/sdk/linearswap/restful/response/unifiedaccount"
 	"huobi_futures_Golang/sdk/log"
-	"huobi_futures_Golang/test/config"
 )
 
 func RunAllExamples() {
