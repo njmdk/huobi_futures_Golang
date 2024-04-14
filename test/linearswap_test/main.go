@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/HuobiRDCenter/huobi_futures_Golang/test/coinswap_test/wscenternotifyclienttest"
 	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/accountclienttest"
 	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/commonclienttest"
 	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/marketclienttest"
@@ -9,6 +8,7 @@ import (
 	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/transferclienttest"
 	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/triggerorderclienttest"
 	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/unifiedaccountclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/wscenternotifyclienttest"
 	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/wsindexclienttest"
 	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/wsmarketclienttest"
 	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/wsnotifyclienttest"
