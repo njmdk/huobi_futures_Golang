@@ -3,10 +3,10 @@ package restful
 import (
 	"encoding/json"
 	"fmt"
-	"huobi_futures_Golang/sdk/linearswap"
-	"huobi_futures_Golang/sdk/linearswap/restful/response/market"
-	"huobi_futures_Golang/sdk/log"
-	"huobi_futures_Golang/sdk/reqbuilder"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/linearswap"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/linearswap/restful/response/market"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/log"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/reqbuilder"
 )
 
 type MarketClient struct {

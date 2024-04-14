@@ -1,9 +1,9 @@
 package wsmarketclienttest
 
 import (
-	"huobi_futures_Golang/sdk/linearswap/ws"
-	"huobi_futures_Golang/sdk/linearswap/ws/response/market"
-	"huobi_futures_Golang/sdk/log"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/linearswap/ws"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/linearswap/ws/response/market"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/log"
 	"time"
 )
 

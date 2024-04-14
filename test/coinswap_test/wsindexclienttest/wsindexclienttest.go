@@ -1,9 +1,9 @@
 package wsindexclienttest
 
 import (
-	"huobi_futures_Golang/sdk/coinswap/ws"
-	"huobi_futures_Golang/sdk/coinswap/ws/response/index"
-	"huobi_futures_Golang/sdk/log"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/coinswap/ws"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/coinswap/ws/response/index"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/log"
 	"time"
 )
 

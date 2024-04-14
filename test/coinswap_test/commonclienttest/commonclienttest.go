@@ -1,10 +1,10 @@
 package commonclienttest
 
 import (
-	"huobi_futures_Golang/config"
-	"huobi_futures_Golang/sdk/coinswap/restful"
-	"huobi_futures_Golang/sdk/coinswap/restful/response/common"
-	"huobi_futures_Golang/sdk/log"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/config"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/coinswap/restful"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/coinswap/restful/response/common"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/log"
 )
 
 func RunAllExamples() {

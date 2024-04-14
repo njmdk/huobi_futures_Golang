@@ -1,11 +1,11 @@
 package triggerorderclienttest
 
 import (
-	"huobi_futures_Golang/config"
-	"huobi_futures_Golang/sdk/linearswap/restful"
-	requesttiggerorder "huobi_futures_Golang/sdk/linearswap/restful/request/triggerorder"
-	"huobi_futures_Golang/sdk/linearswap/restful/response/triggerorder"
-	"huobi_futures_Golang/sdk/log"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/config"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/linearswap/restful"
+	requesttiggerorder "github.com/HuobiRDCenter/huobi_futures_Golang/sdk/linearswap/restful/request/triggerorder"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/linearswap/restful/response/triggerorder"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/log"
 )
 
 func RunAllExamples() {

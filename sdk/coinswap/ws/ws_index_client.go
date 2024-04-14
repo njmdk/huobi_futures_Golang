@@ -3,9 +3,9 @@ package ws
 import (
 	"encoding/json"
 	"fmt"
-	"huobi_futures_Golang/sdk/coinswap"
-	"huobi_futures_Golang/sdk/coinswap/ws/response/index"
-	"huobi_futures_Golang/sdk/wsbase"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/coinswap"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/coinswap/ws/response/index"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/wsbase"
 	"reflect"
 )
 

@@ -3,9 +3,9 @@ package ws
 import (
 	"encoding/json"
 	"fmt"
-	"huobi_futures_Golang/sdk/linearswap"
-	"huobi_futures_Golang/sdk/linearswap/ws/response/centernotify"
-	"huobi_futures_Golang/sdk/wsbase"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/linearswap"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/linearswap/ws/response/centernotify"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/wsbase"
 	"reflect"
 )
 
@@ -23,6 +23,7 @@ func (wsNf *WSCenterNotifyClient) Init(accessKey string, secretKey string, host 
 
 // -------------------------------------------------------------
 // heartbeat start
+
 type OnSubHeartbeatResponse func(*centernotify.SubHeartbeatResponse)
 
 func (wsNf *WSCenterNotifyClient) SubHeartbeat(service string, callbackFun OnSubHeartbeatResponse, cid string) {

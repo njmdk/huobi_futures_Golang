@@ -1,17 +1,17 @@
 package main
 
 import (
-	"huobi_futures_Golang/test/linearswap_test/accountclienttest"
-	"huobi_futures_Golang/test/linearswap_test/commonclienttest"
-	"huobi_futures_Golang/test/linearswap_test/marketclienttest"
-	"huobi_futures_Golang/test/linearswap_test/orderclienttest"
-	"huobi_futures_Golang/test/linearswap_test/transferclienttest"
-	"huobi_futures_Golang/test/linearswap_test/triggerorderclienttest"
-	"huobi_futures_Golang/test/linearswap_test/unifiedaccountclienttest"
-	"huobi_futures_Golang/test/linearswap_test/wscenternotifyclienttest"
-	"huobi_futures_Golang/test/linearswap_test/wsindexclienttest"
-	"huobi_futures_Golang/test/linearswap_test/wsmarketclienttest"
-	"huobi_futures_Golang/test/linearswap_test/wsnotifyclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/coinswap_test/wscenternotifyclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/accountclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/commonclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/marketclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/orderclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/transferclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/triggerorderclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/unifiedaccountclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/wsindexclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/wsmarketclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/linearswap_test/wsnotifyclienttest"
 )
 
 func main() {

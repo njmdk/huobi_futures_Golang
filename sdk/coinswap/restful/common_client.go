@@ -3,10 +3,10 @@ package restful
 import (
 	"encoding/json"
 	"fmt"
-	"huobi_futures_Golang/sdk/coinswap"
-	"huobi_futures_Golang/sdk/coinswap/restful/response/common"
-	"huobi_futures_Golang/sdk/log"
-	"huobi_futures_Golang/sdk/reqbuilder"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/coinswap"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/coinswap/restful/response/common"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/log"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/reqbuilder"
 )
 
 type CommonClient struct {

@@ -1,16 +1,16 @@
 package main
 
 import (
-	"huobi_futures_Golang/test/coinfutures_test/accountclienttest"
-	"huobi_futures_Golang/test/coinfutures_test/commonclienttest"
-	"huobi_futures_Golang/test/coinfutures_test/marketclienttest"
-	"huobi_futures_Golang/test/coinfutures_test/orderclienttest"
-	"huobi_futures_Golang/test/coinfutures_test/transferclienttest"
-	"huobi_futures_Golang/test/coinfutures_test/triggerorderclienttest"
-	"huobi_futures_Golang/test/coinfutures_test/wscenternotifyclienttest"
-	"huobi_futures_Golang/test/coinfutures_test/wsindexclienttest"
-	"huobi_futures_Golang/test/coinfutures_test/wsmarketclienttest"
-	"huobi_futures_Golang/test/coinfutures_test/wsnotifyclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/coinfutures_test/accountclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/coinfutures_test/commonclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/coinfutures_test/marketclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/coinfutures_test/orderclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/coinfutures_test/transferclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/coinfutures_test/triggerorderclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/coinfutures_test/wscenternotifyclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/coinfutures_test/wsindexclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/coinfutures_test/wsmarketclienttest"
+	"github.com/HuobiRDCenter/huobi_futures_Golang/test/coinfutures_test/wsnotifyclienttest"
 )
 
 func main() {
