@@ -396,3 +396,29 @@ func (wsNf *WSNotifyClient) CrossUnsubTriggerOrder(contractCode string, cid stri
 
 	wsNf.unsub(jdata, ch)
 }
+
+type OnSubContractElementsResponse func(*notify.SubContractElementsResponse)
+
+func (wsNf *WSNotifyClient) SubContractElements(contractCode string, callbackFun OnSubContractElementsResponse, cid string) {
+	if cid == "" {
+		cid = linearswap.DEFAULT_CID
+	}
+
+	ch := fmt.Sprintf("public.%s.contract_elements", contractCode)
+	opData := wsbase.WSOpData{Op: "sub", Cid: cid, Topic: ch}
+	jdata, _ := json.Marshal(opData)
+
+	wsNf.sub(jdata, ch, callbackFun, reflect.TypeOf(notify.SubContractElementsResponse{}))
+}
+
+func (wsNf *WSNotifyClient) UnSubContractElements(contractCode string, cid string) {
+	if cid == "" {
+		cid = linearswap.DEFAULT_CID
+	}
+
+	ch := fmt.Sprintf("public.%s.contract_elements", contractCode)
+	opData := wsbase.WSOpData{Op: "unsub", Cid: cid, Topic: ch}
+	jdata, _ := json.Marshal(opData)
+
+	wsNf.unsub(jdata, ch)
+}

@@ -278,3 +278,29 @@ func (wsNf *WSNotifyClient) IsolatedUnsubTriggerOrder(contractCode string, cid s
 
 // trigger order end
 //-------------------------------------------------------------
+
+type OnSubContractElementsResponse func(*notify.SubContractElementsResponse)
+
+func (wsNf *WSNotifyClient) SubContractElements(symbol string, callbackFun OnSubContractElementsResponse, cid string) {
+	if cid == "" {
+		cid = coinswap.DEFAULT_CID
+	}
+
+	ch := fmt.Sprintf("public.%s.contract_elements", symbol)
+	opData := wsbase.WSOpData{Op: "sub", Cid: cid, Topic: ch}
+	jdata, _ := json.Marshal(opData)
+
+	wsNf.sub(jdata, ch, callbackFun, reflect.TypeOf(notify.SubContractElementsResponse{}))
+}
+
+func (wsNf *WSNotifyClient) UnSubContractElements(symbol string, cid string) {
+	if cid == "" {
+		cid = coinswap.DEFAULT_CID
+	}
+
+	ch := fmt.Sprintf("public.%s.contract_elements", symbol)
+	opData := wsbase.WSOpData{Op: "unsub", Cid: cid, Topic: ch}
+	jdata, _ := json.Marshal(opData)
+
+	wsNf.unsub(jdata, ch)
+}
