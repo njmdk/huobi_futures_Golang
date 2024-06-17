@@ -18,6 +18,7 @@ type SwapPositionInfoResponse struct {
 		Direction      string  `json:"direction"`
 		LastPrice      float64 `json:"last_price"`
 		AdlRiskPercent string  `json:"adl_risk_percent,omitempty"`
+		LiqPx          string  `json:"liq_px"`
 		NewRiskRate    string  `json:"new_risk_rate"`
 		TradePartition string  `json:"trade_partition"`
 	} `json:"data"`
