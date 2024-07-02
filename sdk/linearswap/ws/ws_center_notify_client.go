@@ -3,9 +3,9 @@ package ws
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/linearswap"
-	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/linearswap/ws/response/centernotify"
-	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/wsbase"
+	"github.com/njmdk/huobi_futures_Golang/sdk/linearswap"
+	"github.com/njmdk/huobi_futures_Golang/sdk/linearswap/ws/response/centernotify"
+	"github.com/njmdk/huobi_futures_Golang/sdk/wsbase"
 	"reflect"
 )
 

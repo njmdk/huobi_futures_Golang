@@ -1,11 +1,11 @@
 package orderclienttest
 
 import (
-	"github.com/HuobiRDCenter/huobi_futures_Golang/config"
-	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/coinswap/restful"
-	requestorder "github.com/HuobiRDCenter/huobi_futures_Golang/sdk/coinswap/restful/request/order"
-	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/coinswap/restful/response/order"
-	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/log"
+	"github.com/njmdk/huobi_futures_Golang/config"
+	"github.com/njmdk/huobi_futures_Golang/sdk/coinswap/restful"
+	requestorder "github.com/njmdk/huobi_futures_Golang/sdk/coinswap/restful/request/order"
+	"github.com/njmdk/huobi_futures_Golang/sdk/coinswap/restful/response/order"
+	"github.com/njmdk/huobi_futures_Golang/sdk/log"
 )
 
 func RunAllExamples() {

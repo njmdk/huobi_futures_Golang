@@ -1,10 +1,10 @@
 package transferclienttest
 
 import (
-	"github.com/HuobiRDCenter/huobi_futures_Golang/config"
-	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/coinswap/restful"
-	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/coinswap/restful/response/transfer"
-	"github.com/HuobiRDCenter/huobi_futures_Golang/sdk/log"
+	"github.com/njmdk/huobi_futures_Golang/config"
+	"github.com/njmdk/huobi_futures_Golang/sdk/coinswap/restful"
+	"github.com/njmdk/huobi_futures_Golang/sdk/coinswap/restful/response/transfer"
+	"github.com/njmdk/huobi_futures_Golang/sdk/log"
 )
 
 func RunAllExamples() {

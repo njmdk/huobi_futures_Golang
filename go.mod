@@ -1,4 +1,4 @@
-module github.com/HuobiRDCenter/huobi_futures_Golang
+module github.com/njmdk/huobi_futures_Golang
 
 go 1.15
 
